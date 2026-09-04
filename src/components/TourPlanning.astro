@@ -1,0 +1,44 @@
+---
+interface Step {
+  title: string;
+  body: string;
+}
+
+interface Props {
+  title: string;
+  intro: string;
+  steps: readonly Step[];
+}
+
+const { title, intro, steps } = Astro.props;
+---
+
+<section aria-labelledby="tour-planning-title" class="bg-[#FAF8F3] px-5 py-20 sm:px-8 sm:py-24">
+  <div class="mx-auto w-full max-w-6xl">
+    <div class="grid gap-5 md:grid-cols-[0.9fr_1.1fr] md:items-end">
+      <h2
+        id="tour-planning-title"
+        class="text-4xl leading-[1.06] font-extrabold tracking-[-0.04em] text-[#073F43] sm:text-5xl"
+      >
+        {title}
+      </h2>
+      <p class="text-lg leading-8 text-[#496c66] md:justify-self-end md:text-right">{intro}</p>
+    </div>
+
+    <ol class="mt-12 grid gap-8 md:grid-cols-3 md:gap-0">
+      {
+        steps.map((step, index) => (
+          <li class="border-t-2 border-[#36BFB7] pt-5 md:px-7 md:first:pl-0 md:last:pr-0">
+            <span class="text-sm font-extrabold tracking-[0.12em] text-[#0b6257]">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3 class="mt-5 text-2xl font-extrabold tracking-[-0.025em] text-[#073F43]">
+              {step.title}
+            </h3>
+            <p class="mt-3 text-base leading-7 text-[#496c66]">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

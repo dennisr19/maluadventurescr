@@ -1,0 +1,65 @@
+---
+import { IconBrandFacebook, IconBrandWhatsapp, IconMail } from "@tabler/icons-astro";
+import BrandMark from "./BrandMark.astro";
+import { contact, whatsappUrl } from "@/data/contact";
+import { pageCopy, type Locale } from "@/data/copy";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "en" } = Astro.props;
+const copy = pageCopy[locale].footer;
+const navigation = pageCopy[locale].navigation;
+const homePath = locale === "es" ? "/es/" : "/";
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-[#032f32] px-5 pt-8 pb-8 text-[#F1EADC] sm:px-8 sm:pt-10">
+  <div class="mx-auto w-full max-w-6xl">
+    <div class="grid gap-10 border-b border-white/15 pb-10 md:grid-cols-[1.25fr_0.75fr_0.75fr]">
+      <div>
+        <BrandMark light large href={homePath} />
+        <p class="mt-5 w-full text-lg leading-8 text-[#bcd9d4] sm:w-96">{copy.tagline}</p>
+      </div>
+
+      <nav aria-label={navigation.label} class="grid content-start gap-3 text-base font-bold">
+        <a class="w-fit hover:text-[#72d7d1]" href={`${homePath}#tours`}>{navigation.tours}</a>
+        <a class="w-fit hover:text-[#72d7d1]" href={`${homePath}#payment`}>{navigation.payment}</a>
+        <a class="w-fit hover:text-[#72d7d1]" href={`${homePath}#contact`}>{navigation.contact}</a>
+      </nav>
+
+      <div class="flex items-start gap-2 md:justify-end">
+        <a
+          href="https://www.facebook.com/profile.php?id=61567030350314"
+          target="_blank"
+          rel="noreferrer"
+          aria-label={navigation.facebook}
+          class="flex size-12 items-center justify-center rounded-full border border-white/20 text-[#F1EADC] transition hover:border-[#72d7d1] hover:bg-[#72d7d1] hover:text-[#073F43] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4C45B]"
+        >
+          <IconBrandFacebook aria-hidden="true" size={24} stroke={2} />
+        </a>
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={navigation.whatsapp}
+          class="flex size-12 items-center justify-center rounded-full border border-white/20 text-[#F1EADC] transition hover:border-[#72d7d1] hover:bg-[#72d7d1] hover:text-[#073F43] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4C45B]"
+        >
+          <IconBrandWhatsapp aria-hidden="true" size={25} stroke={2} />
+        </a>
+        <a
+          href={`mailto:${contact.email}`}
+          aria-label={navigation.email}
+          class="flex size-12 items-center justify-center rounded-full border border-white/20 text-[#F1EADC] transition hover:border-[#72d7d1] hover:bg-[#72d7d1] hover:text-[#073F43] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4C45B]"
+        >
+          <IconMail aria-hidden="true" size={24} stroke={2} />
+        </a>
+      </div>
+    </div>
+    <div class="flex flex-col gap-2 pt-6 text-sm text-[#95bbb5] sm:flex-row sm:items-center sm:justify-between">
+      <p>© {year} Malú Adventures</p>
+      <a class="w-fit hover:text-[#F1EADC]" href={`mailto:${contact.email}`}>{contact.email}</a>
+    </div>
+  </div>
+</footer>

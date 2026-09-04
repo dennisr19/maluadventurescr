@@ -1,0 +1,100 @@
+---
+import { IconBrandFacebook, IconBrandWhatsapp, IconMenu2 } from "@tabler/icons-astro";
+import { whatsappUrl } from "@/data/contact";
+import { pageCopy, type Locale } from "@/data/copy";
+import BrandMark from "./BrandMark.astro";
+import { LanguageMenu } from "./LanguageMenu";
+
+interface Props {
+  locale?: Locale;
+  homeLinks?: boolean;
+}
+
+const { locale = "en", homeLinks = false } = Astro.props;
+const copy = pageCopy[locale].navigation;
+const homePath = locale === "es" ? "/es/" : "/";
+const sectionHref = (section: string) => (homeLinks ? `${homePath}#${section}` : `#${section}`);
+---
+
+<header class="absolute inset-x-0 top-0 z-30 px-4 pt-4 text-[#073f39] sm:px-8 sm:pt-5">
+  <div
+    class="mx-auto flex min-h-20 w-full max-w-6xl items-center rounded-[1.75rem] bg-white px-4 shadow-[0_16px_50px_rgba(2,39,36,0.2)] ring-1 ring-white sm:px-6"
+  >
+    <BrandMark large href={locale === "es" ? "/es/" : "/"} />
+
+    <nav aria-label={copy.label} class="ml-auto hidden items-center gap-8 md:flex">
+      <a
+        class="border-b-2 border-transparent py-1 text-lg font-bold text-[#315f58] transition hover:border-[#F4C45B] hover:text-[#073f39]"
+        href={sectionHref("tours")}
+      >
+        {copy.tours}
+      </a>
+      <a
+        class="border-b-2 border-transparent py-1 text-lg font-bold text-[#315f58] transition hover:border-[#F4C45B] hover:text-[#073f39]"
+        href={sectionHref("payment")}
+      >
+        {copy.payment}
+      </a>
+      <a
+        class="border-b-2 border-transparent py-1 text-lg font-bold text-[#315f58] transition hover:border-[#F4C45B] hover:text-[#073f39]"
+        href={sectionHref("contact")}
+      >
+        {copy.contact}
+      </a>
+    </nav>
+
+    <div class="ml-auto flex items-center gap-1 sm:ml-5 md:border-l md:border-[#c9e9e4] md:pl-4">
+      <a
+        class="hidden size-12 items-center justify-center text-[#0b6257] transition hover:text-[#c18d16] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#168c9e] sm:flex"
+        href="https://www.facebook.com/profile.php?id=61567030350314"
+        target="_blank"
+        rel="noreferrer"
+        aria-label={copy.facebook}
+      >
+        <IconBrandFacebook aria-hidden="true" size={26} stroke={2} />
+      </a>
+      <a
+        class="flex size-12 items-center justify-center text-[#0b6257] transition hover:text-[#c18d16] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#168c9e]"
+        href={whatsappUrl}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={copy.whatsapp}
+      >
+        <IconBrandWhatsapp aria-hidden="true" size={27} stroke={2} />
+      </a>
+      <LanguageMenu locale={locale} client:load />
+
+      <details class="group relative ml-1 md:hidden">
+        <summary
+          class="flex size-12 cursor-pointer list-none items-center justify-center rounded-full bg-[#073F43] text-[#F1EADC] transition hover:bg-[#0b6257] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4C45B]"
+          aria-label={copy.open}
+        >
+          <IconMenu2 aria-hidden="true" size={25} stroke={2} />
+        </summary>
+        <nav
+          aria-label={copy.mobileLabel}
+          class="absolute top-14 right-0 grid w-52 gap-1 rounded-2xl bg-white p-2 text-[#123f39] shadow-[0_18px_48px_rgba(4,39,35,0.2)] ring-1 ring-[#b9deda]"
+        >
+          <a
+            class="rounded-xl px-4 py-3 text-base font-semibold hover:bg-[#e5f8f5]"
+            href={sectionHref("tours")}
+          >
+            {copy.tours}
+          </a>
+          <a
+            class="rounded-xl px-4 py-3 text-base font-semibold hover:bg-[#e5f8f5]"
+            href={sectionHref("payment")}
+          >
+            {copy.payment}
+          </a>
+          <a
+            class="rounded-xl px-4 py-3 text-base font-semibold hover:bg-[#e5f8f5]"
+            href={sectionHref("contact")}
+          >
+            {copy.contact}
+          </a>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

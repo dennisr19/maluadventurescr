@@ -1,0 +1,41 @@
+---
+import { IconBrandWhatsapp } from "@tabler/icons-astro";
+import { whatsappUrl } from "@/data/contact";
+import { pageCopy, type Locale } from "@/data/copy";
+import { FaqAccordion } from "./FaqAccordion";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "en" } = Astro.props;
+const copy = pageCopy[locale].faq;
+---
+
+<section aria-labelledby="faq-title" class="bg-[#FAF8F3] px-5 py-24 sm:px-8 sm:py-28">
+  <div class="mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+    <div class="lg:sticky lg:top-12 lg:self-start">
+      <p class="text-sm font-bold tracking-[0.12em] text-[#0b6257] uppercase">
+        {copy.eyebrow}
+      </p>
+      <h2
+        id="faq-title"
+        class="mt-4 text-4xl leading-[1.1] font-bold tracking-[-0.025em] text-[#073F43] sm:text-[2.75rem]"
+      >
+        {copy.title}
+      </h2>
+      <p class="mt-6 text-lg leading-8 text-[#496c66]">{copy.intro}</p>
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noreferrer"
+        class="mt-7 inline-flex min-h-12 items-center gap-2.5 text-base font-extrabold text-[#0b6257] underline decoration-[#36BFB7] decoration-2 underline-offset-8 transition hover:text-[#073F43] focus-visible:rounded-lg focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#36BFB7]"
+      >
+        <IconBrandWhatsapp aria-hidden="true" size={24} stroke={2.2} />
+        {copy.contact}
+      </a>
+    </div>
+
+    <FaqAccordion items={copy.items} client:visible />
+  </div>
+</section>

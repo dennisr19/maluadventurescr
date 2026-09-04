@@ -1,0 +1,91 @@
+---
+import { IconStarFilled } from "@tabler/icons-astro";
+import { pageCopy, type Locale } from "@/data/copy";
+import { HeroActions } from "./HeroActions";
+import HeroWave from "./HeroWave.astro";
+import Navigation from "./Navigation.astro";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "en" } = Astro.props;
+const copy = pageCopy[locale].hero;
+---
+
+<section
+  class="relative isolate min-h-[50rem] overflow-hidden bg-[#285F49] text-[#F1EADC] lg:min-h-[82svh]"
+>
+  <img
+    src="/images/manuel-antonio-hero.jpg"
+    alt={copy.imageAlt}
+    width="2400"
+    height="1350"
+    fetchpriority="high"
+    class="absolute inset-0 -z-40 h-full w-full object-cover [object-position:58%_center]"
+  />
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="/images/manuel-antonio-hero.jpg"
+    aria-hidden="true"
+    class="absolute inset-0 -z-30 h-full w-full object-cover [object-position:58%_center] motion-reduce:hidden"
+  >
+    <source src="/videos/pexels-thai-beach-33022213.mp4" type="video/mp4" />
+  </video>
+  <div class="absolute inset-0 -z-20 bg-[#073F43]/52"></div>
+
+  <Navigation locale={locale} />
+
+  <div
+    class="mx-auto flex min-h-[50rem] w-full max-w-6xl items-center justify-center px-5 pt-28 pb-14 text-center sm:px-8 lg:min-h-[82svh]"
+  >
+    <div class="w-full lg:w-4/5 xl:w-3/4">
+      <div class="mb-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+        <span class="flex items-center gap-1 text-[#F4C45B]" aria-hidden="true">
+          {
+            Array.from({ length: 5 }).map(() => (
+              <IconStarFilled size={17} stroke={1.8} />
+            ))
+          }
+        </span>
+        <p class="text-sm font-extrabold tracking-[0.14em] text-[#F1EADC] uppercase sm:text-base">
+          {copy.eyebrow}
+        </p>
+      </div>
+      <h1
+        class="text-[clamp(1.85rem,9vw,4.75rem)] leading-[0.96] font-bold tracking-[-0.04em] [font-family:'Sora_Variable',ui-sans-serif,sans-serif]"
+      >
+        <span class="block whitespace-nowrap">{copy.titleLineOne}</span>
+        <span class="mt-1 block whitespace-nowrap">
+          {copy.titleLineTwoLead}{" "}
+          <span
+            class="inline-block -rotate-5 origin-center pb-2 text-[1.12em] leading-[1.08] font-bold text-[#F1EADC] underline decoration-[#F4C45B] decoration-[0.1em] underline-offset-[0.1em] [font-family:'Kalam',cursive]"
+          >
+            {copy.titleAccent}
+          </span>
+          {" "}<span
+            class="inline-block -skew-x-6 font-extrabold text-[#F4C45B]"
+          >
+            {copy.titleBrandSuffix}
+          </span>
+        </span>
+      </h1>
+
+      <p class="mx-auto mt-7 text-lg leading-8 font-normal text-[#F1EADC]/90 sm:w-4/5 sm:text-xl lg:w-2/3">
+        {copy.body}
+      </p>
+
+      <HeroActions
+        locale={locale}
+        primary={copy.primary}
+        secondary={copy.secondary}
+      />
+    </div>
+  </div>
+
+  <HeroWave />
+</section>

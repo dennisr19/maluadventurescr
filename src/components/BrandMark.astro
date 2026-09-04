@@ -1,0 +1,27 @@
+---
+interface Props {
+  light?: boolean;
+  large?: boolean;
+  href?: string;
+}
+
+const { light = false, large = false, href = "/" } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    "inline-flex items-baseline whitespace-nowrap",
+    light ? "text-white" : "text-[#073f39]",
+  ]}
+  aria-label="Malú Adventures home"
+>
+  <span
+    class:list={[
+      "inline-block -rotate-5 origin-center pb-1 font-semibold underline decoration-[#F4C45B] decoration-[0.12em] underline-offset-[0.08em] [font-family:'Caveat_Variable',cursive]",
+      large ? "text-4xl leading-none" : "text-3xl leading-none",
+    ]}
+  >
+    Malú
+  </span>
+</a>

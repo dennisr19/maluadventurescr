@@ -1,0 +1,22 @@
+---
+import ContactSection from "@/components/ContactSection.astro";
+import FaqSection from "@/components/FaqSection.astro";
+import FeaturedTours from "@/components/FeaturedTours.astro";
+import Footer from "@/components/Footer.astro";
+import Hero from "@/components/Hero.astro";
+import PaymentNote from "@/components/PaymentNote.astro";
+import { TourCatalog } from "@/components/catalog/TourCatalog";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+---
+
+<SiteLayout>
+  <Hero locale="en" />
+  <main id="main-content">
+    <FeaturedTours locale="en" />
+    <TourCatalog locale="en" client:visible={{ rootMargin: "240px" }} />
+    <PaymentNote locale="en" />
+    <FaqSection locale="en" />
+    <ContactSection locale="en" />
+  </main>
+  <Footer locale="en" />
+</SiteLayout>

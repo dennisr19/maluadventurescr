@@ -1,0 +1,31 @@
+---
+import { createWhatsappUrl } from "@/data/contact";
+import { pageCopy, type Locale } from "@/data/copy";
+import { featuredTourDefinitions, getFeaturedTour } from "@/data/featured-tours";
+import { categoryLabels } from "@/data/tours";
+import { FeaturedTourGrid } from "./FeaturedTourGrid";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "en" } = Astro.props;
+const copy = pageCopy[locale].featured;
+const basePath = locale === "es" ? "/es/tours" : "/tours";
+const featuredTours = featuredTourDefinitions.map((definition) => {
+  const featured = getFeaturedTour(definition, locale);
+  const message =
+    locale === "es"
+      ? `Hola Malú Adventures, me gustaría solicitar el tour ${featured.tour.name}.`
+      : `Hello Malú Adventures, I'd like to request the ${featured.tour.name} tour.`;
+
+  return {
+    ...featured,
+    categoryLabel: categoryLabels[locale][featured.tour.category],
+    detailHref: `${basePath}/${definition.id}/`,
+    requestHref: createWhatsappUrl(message),
+  };
+});
+---
+
+<FeaturedTourGrid tours={featuredTours} copy={copy} />

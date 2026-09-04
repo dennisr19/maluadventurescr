@@ -1,0 +1,28 @@
+---
+import TourDetailPage from "@/components/TourDetailPage.astro";
+import { tourGalleryImages, tourImages } from "@/data/tour-images";
+import { localizeTour, tours } from "@/data/tours";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+
+export function getStaticPaths() {
+  return tours.map((tour) => ({
+    params: { id: tour.id },
+    props: { tourId: tour.id },
+  }));
+}
+
+const { tourId } = Astro.props;
+const sourceTour = tours.find((tour) => tour.id === tourId);
+if (!sourceTour) throw new Error(`Missing tour: ${tourId}`);
+const tour = localizeTour(sourceTour, "en");
+---
+
+<SiteLayout title={`${tour.name} | Malú Adventures`}>
+  <TourDetailPage
+    tour={tour}
+    image={tourImages[tour.id]}
+    gallery={tourGalleryImages[tour.id] ?? []}
+    imageAlt={`${tour.name} in Costa Rica`}
+    locale="en"
+  />
+</SiteLayout>

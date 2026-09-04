@@ -1,0 +1,43 @@
+{
+  "name": "malu-adventures",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "format": "biome format --write .",
+    "lint": "biome check .",
+    "policy": "node scripts/check-no-handrolled-css.mjs && node scripts/check-component-size.mjs && node scripts/check-consistent-container.mjs",
+    "check:staged": "npm run lint && npm run policy",
+    "check:fast": "npm run check:staged && astro check",
+    "check:full": "npm run check:fast && npm run build",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@astrojs/react": "^6.0.5",
+    "@base-ui/react": "^1.7.0",
+    "@fontsource-variable/caveat": "^5.3.0",
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource-variable/sora": "^5.3.0",
+    "@fontsource/kalam": "^5.3.0",
+    "@tabler/icons-astro": "^3.46.0",
+    "@tabler/icons-react": "^3.46.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cn": "^0.2.5",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@biomejs/biome": "^2.5.12",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.128.0"
+  }
+}

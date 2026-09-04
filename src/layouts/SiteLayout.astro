@@ -1,0 +1,52 @@
+---
+import "../styles/global.css";
+import "@fontsource-variable/caveat";
+import "@fontsource/kalam/400.css";
+import "@fontsource/kalam/700.css";
+import "@fontsource-variable/manrope";
+import "@fontsource-variable/sora";
+import { pageCopy, type Locale } from "@/data/copy";
+
+interface Props {
+  title?: string;
+  description?: string;
+  locale?: Locale;
+}
+
+const {
+  locale = "en",
+  title = pageCopy[locale].meta.title,
+  description = pageCopy[locale].meta.description,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={locale} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#063f39" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body
+    class="min-h-screen overflow-x-hidden bg-[#f7fcfb] text-base text-[#0b332f] antialiased selection:bg-[#8ddff0] selection:text-[#063f39] [font-family:'Manrope_Variable',ui-sans-serif,sans-serif]"
+  >
+    <!--
+      THESIS: An adventure brand speaks through one decisive landscape and an editorial message; it refuses the centered tour-template stack.
+      OWN-WORLD: Ocean dark, jungle green, tropical teal, sand, and sun frame Sora, Kalam, Manrope, large photography, and 16px controls.
+      STORY: Visitors meet Malu, understand the Pacific Coast experiences, and move directly into the tour catalog or WhatsApp.
+      FIRST VIEWPORT: A floating navigation sits above an asymmetric left-aligned hero, a 56px to 72px Sora headline, supporting copy, and two ranked actions.
+      FORM: User-pinned coastal adventure catalog, first in the ordered options; seed key afd5e70c.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+    -->
+    <a
+      href="#main-content"
+      class="sr-only z-[100] rounded-full bg-white px-4 py-2 text-base font-semibold text-[#0d5b53] focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+    >
+      {pageCopy[locale].meta.skip}
+    </a>
+    <slot />
+  </body>
+</html>

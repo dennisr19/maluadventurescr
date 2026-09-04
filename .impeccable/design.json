@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-03T12:22:00-06:00",
+  "title": "Design System: Malu Adventures",
+  "extensions": {
+    "colorMeta": {
+      "jungle-deep": {
+        "role": "primary",
+        "displayName": "Deep Jungle",
+        "canonical": "#063f39",
+        "tonalRamp": ["#031f1c", "#063f39", "#0b6257"]
+      },
+      "ocean-sky": {
+        "role": "secondary",
+        "displayName": "Sea-Sky Cyan",
+        "canonical": "#8ddff0",
+        "tonalRamp": ["#168c9e", "#8ddff0", "#b3edf8"]
+      },
+      "jungle-mist": {
+        "role": "tertiary",
+        "displayName": "Jungle Mist",
+        "canonical": "#dff7f3",
+        "tonalRamp": ["#9bd9d1", "#dff7f3", "#f7fffe"]
+      },
+      "solar-star": {
+        "role": "tertiary",
+        "displayName": "Solar Star",
+        "canonical": "#ffd166",
+        "tonalRamp": ["#b77b00", "#ffd166", "#ffedbd"]
+      },
+      "page": {
+        "role": "neutral",
+        "displayName": "Page Mist",
+        "canonical": "#f7fcfb",
+        "tonalRamp": ["#c9e9e4", "#f7fcfb", "#ffffff"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Hero Display",
+        "purpose": "Manrope anchors the 6xl hero title."
+      },
+      "brand-script": {
+        "displayName": "Malu Signature",
+        "purpose": "Caveat is reserved for the word Malu."
+      },
+      "body": {
+        "displayName": "Compact Guide Copy",
+        "purpose": "Manrope keeps catalog information easy to scan."
+      }
+    },
+    "shadows": [
+      {
+        "name": "nav-float",
+        "value": "0 16px 50px rgba(2,39,36,0.18)",
+        "purpose": "Lift the opaque navigation capsule above photography."
+      },
+      {
+        "name": "trust-panel",
+        "value": "0 20px 56px rgba(2,34,32,0.24)",
+        "purpose": "Separate factual trust signals from the destination image."
+      },
+      {
+        "name": "card-hover",
+        "value": "0 18px 50px rgba(20,80,70,0.10)",
+        "purpose": "Provide ambient feedback when a catalog card is hovered."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary WhatsApp Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The only maximum-weight action in the viewport.",
+      "html": "<a class=\"ds-primary\" href=\"#\">Plan on WhatsApp</a>",
+      "css": ".ds-primary { display:inline-flex; min-height:48px; align-items:center; border-radius:9999px; background:#8ddff0; color:#063f39; padding:0 24px; font:800 14px Manrope,sans-serif; } .ds-primary:hover { background:#b3edf8; }"
+    },
+    {
+      "name": "Floating Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "An opaque near-white capsule over the hero photograph.",
+      "html": "<nav class=\"ds-nav\">Malu Adventures</nav>",
+      "css": ".ds-nav { min-height:64px; border-radius:9999px; background:#f7fffe; color:#063f39; padding:0 20px; box-shadow:0 16px 50px rgba(2,39,36,.18); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Pacific Adventure Desk",
+    "overview": "Destination energy meets a bright, direct interface. Ocean cyan, deep jungle green, one solar accent, decisive photography, and opaque information surfaces create a lively Costa Rican identity.",
+    "keyCharacteristics": [
+      "Full-width destination photography",
+      "Caveat script reserved for Malu",
+      "One maximum-weight WhatsApp action",
+      "Compact catalog typography"
+    ],
+    "rules": [
+      {
+        "name": "The One Beacon Rule",
+        "body": "Only WhatsApp receives the cyan maximum-weight fill in a viewport.",
+        "section": "colors"
+      },
+      {
+        "name": "The Signature Word Rule",
+        "body": "Caveat is reserved for Malu in the hero and brand mark.",
+        "section": "typography"
+      },
+      {
+        "name": "The Grounded Surface Rule",
+        "body": "Shadows indicate a surface crossing photography or reacting to interaction.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep ocean cyan and jungle green visible in key interactions.",
+      "Do use verified facts in proof and trust patterns.",
+      "Do keep both hero actions on one row with different visual weight."
+    ],
+    "donts": [
+      "Don't invent ratings, reviews, or social profiles.",
+      "Don't add another filled action beside WhatsApp.",
+      "Don't introduce custom CSS or inconsistent top-level widths."
+    ]
+  }
+}
