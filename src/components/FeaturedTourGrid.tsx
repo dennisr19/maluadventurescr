@@ -14,7 +14,10 @@ interface FeaturedTourGridProps {
 
 export function FeaturedTourGrid({ tours, copy }: FeaturedTourGridProps) {
   return (
-    <section aria-labelledby="featured-title" className="bg-[#FAF8F3] px-5 py-20 sm:px-8 sm:py-24">
+    <section
+      aria-labelledby="featured-title"
+      className="relative -mt-px bg-[#FAF8F3] px-5 py-20 sm:px-8 sm:py-24"
+    >
       <div className="mx-auto w-full max-w-6xl">
         <div className="mx-auto text-center lg:w-4/5">
           <p className="text-sm font-extrabold tracking-[0.16em] text-[#0b6257] uppercase sm:text-base">

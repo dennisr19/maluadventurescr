@@ -81,23 +81,27 @@ export function TourFilters({
           <legend className="mb-2 text-sm font-extrabold text-[#315f58]">
             {copy.categoryLabel}
           </legend>
-          <ToggleGroup
-            aria-label={copy.filterLabel}
-            value={[category]}
-            onValueChange={(value) => onCategoryChange((value[0] ?? "all") as TourCategory | "all")}
-            className="flex gap-2 overflow-x-auto pb-1"
-          >
-            {categoryOptions.map((option) => (
-              <ToggleGroupItem
-                key={option.value}
-                value={option.value}
-                variant="outline"
-                className="min-h-12 shrink-0 rounded-full border-[#a9cbc5] bg-white px-5 text-base font-bold text-[#315f58] hover:border-[#62cec6] hover:bg-[#eef9f7] focus-visible:ring-[#bcece7] aria-pressed:border-[#073F43] aria-pressed:bg-[#073F43] aria-pressed:text-white"
-              >
-                {option.label}
-              </ToggleGroupItem>
-            ))}
-          </ToggleGroup>
+          <div className="w-full overflow-x-auto pb-1">
+            <ToggleGroup
+              aria-label={copy.filterLabel}
+              value={[category]}
+              onValueChange={(value) =>
+                onCategoryChange((value[0] ?? "all") as TourCategory | "all")
+              }
+              className="w-max min-w-full justify-start"
+            >
+              {categoryOptions.map((option) => (
+                <ToggleGroupItem
+                  key={option.value}
+                  value={option.value}
+                  variant="outline"
+                  className="min-h-12 shrink-0 rounded-full border-[#a9cbc5] bg-white px-5 text-base font-bold text-[#315f58] hover:border-[#62cec6] hover:bg-[#eef9f7] focus-visible:ring-[#bcece7] aria-pressed:border-[#073F43] aria-pressed:bg-[#073F43] aria-pressed:text-white"
+                >
+                  {option.label}
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
+          </div>
         </fieldset>
 
         <div className="grid gap-4 sm:grid-cols-2">
