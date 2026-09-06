@@ -12,12 +12,14 @@ interface Props {
   title?: string;
   description?: string;
   locale?: Locale;
+  noindex?: boolean;
 }
 
 const {
   locale = "en",
   title = pageCopy[locale].meta.title,
   description = pageCopy[locale].meta.description,
+  noindex = false,
 } = Astro.props;
 ---
 
@@ -26,6 +28,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#063f39" />
     <meta name="generator" content={Astro.generator} />

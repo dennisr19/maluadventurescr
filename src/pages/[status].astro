@@ -1,0 +1,21 @@
+---
+import ErrorPage from "@/components/ErrorPage.astro";
+import { errorPages, type ErrorPageContent } from "@/data/error-pages";
+
+export function getStaticPaths() {
+  const codes: ErrorPageContent["code"][] = ["400", "403", "500", "503"];
+
+  return codes.map((code) => ({
+    params: { status: code },
+    props: { content: errorPages[code] },
+  }));
+}
+
+interface Props {
+  content: ErrorPageContent;
+}
+
+const { content } = Astro.props;
+---
+
+<ErrorPage content={content} />

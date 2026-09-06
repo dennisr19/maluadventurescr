@@ -1,0 +1,58 @@
+---
+import { IconMapPin } from "@tabler/icons-astro";
+import type { ErrorPageContent } from "@/data/error-pages";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import BrandMark from "./BrandMark.astro";
+import { ErrorActions } from "./ErrorActions";
+
+interface Props {
+  content: ErrorPageContent;
+}
+
+const { content } = Astro.props;
+---
+
+<SiteLayout
+  title={`${content.code} | Malú Adventures`}
+  description={content.body}
+  noindex
+>
+  <main id="main-content" class="relative isolate min-h-[100svh] overflow-hidden bg-[#073F43] text-[#F1EADC]">
+    <img
+      src="/images/manuel-antonio-hero.jpg"
+      alt=""
+      aria-hidden="true"
+      width="2400"
+      height="1350"
+      class="absolute inset-0 -z-30 h-full w-full object-cover [object-position:58%_center]"
+    />
+    <div class="absolute inset-0 -z-20 bg-[#073F43]/72"></div>
+
+    <div class="mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col px-5 py-5 sm:px-8 sm:py-8">
+      <header class="flex items-center justify-between rounded-full bg-white px-6 py-4 shadow-[0_18px_55px_rgba(3,37,39,0.25)] sm:px-8">
+        <BrandMark lockup />
+        <a class="text-base font-bold text-[#285943] hover:text-[#071E52]" href="/#tours">Tours</a>
+      </header>
+
+      <section class="flex flex-1 items-center py-14 sm:py-20">
+        <div class="w-full lg:w-2/3">
+          <p class="text-8xl leading-none font-black tracking-[-0.04em] text-white/18 sm:text-9xl">
+            {content.code}
+          </p>
+          <h1 class="mt-5 text-4xl leading-tight font-bold tracking-[-0.04em] text-[#F1EADC] sm:text-6xl">
+            {content.title}
+          </h1>
+          <p class="mt-4 text-xl leading-8 font-semibold text-[#B7E3C9] sm:text-2xl">{content.titleEs}</p>
+          <p class="mt-7 text-lg leading-8 text-[#F1EADC]/90 sm:w-5/6 sm:text-xl">{content.body}</p>
+          <p class="mt-2 text-base leading-7 text-[#F1EADC]/70 sm:w-5/6 sm:text-lg">{content.bodyEs}</p>
+          <ErrorActions />
+        </div>
+      </section>
+
+      <footer class="flex items-center gap-2 border-t border-white/20 pt-5 text-sm font-bold tracking-[0.08em] text-[#F1EADC]/75 uppercase">
+        <IconMapPin aria-hidden="true" size={20} stroke={2} />
+        Manuel Antonio, Costa Rica
+      </footer>
+    </div>
+  </main>
+</SiteLayout>
