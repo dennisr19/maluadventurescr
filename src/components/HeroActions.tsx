@@ -16,7 +16,7 @@ export function HeroActions({ locale, primary, secondary }: HeroActionsProps) {
         render={<a href="#tours" />}
         className="group h-14 rounded-full bg-white py-2 pr-6 pl-2 text-base font-extrabold text-[#073F43] shadow-[0_14px_34px_rgba(3,37,39,0.28)] hover:bg-white active:scale-[0.98] focus-visible:ring-[#F4C45B] sm:h-16 sm:pr-8 sm:pl-2.5 sm:text-lg"
       >
-        <span className="flex size-10 items-center justify-center rounded-full bg-[#F4C45B] transition-colors group-hover:bg-[#e4b44c] sm:size-12">
+        <span className="flex size-10 items-center justify-center rounded-full bg-[#4B8F2F] text-white transition-colors group-hover:bg-[#3b7425] sm:size-12">
           <IconArrowDownRight
             aria-hidden="true"
             className="transition-transform duration-300 group-hover:rotate-45"

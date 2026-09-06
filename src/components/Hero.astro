@@ -1,6 +1,7 @@
 ---
 import { IconStarFilled } from "@tabler/icons-astro";
 import { pageCopy, type Locale } from "@/data/copy";
+import BrandLockup from "./BrandLockup.astro";
 import { HeroActions } from "./HeroActions";
 import HeroWave from "./HeroWave.astro";
 import Navigation from "./Navigation.astro";
@@ -57,21 +58,14 @@ const copy = pageCopy[locale].hero;
         </p>
       </div>
       <h1
-        class="text-[clamp(2.15rem,10vw,4.75rem)] leading-[0.96] font-bold tracking-[-0.04em] sm:text-6xl md:text-[4rem] lg:text-[4.75rem] [font-family:'Sora_Variable',ui-sans-serif,sans-serif]"
+        class="text-[clamp(2.15rem,10vw,4.75rem)] leading-[0.96] font-normal tracking-[-0.04em] sm:text-6xl md:text-[4rem] lg:text-[4.75rem] [font-family:'Sora_Variable',ui-sans-serif,sans-serif]"
       >
-        <span class="block lg:whitespace-nowrap">{copy.titleLineOne}</span>
-        <span class="mt-1 block lg:whitespace-nowrap">
-          {copy.titleLineTwoLead}{" "}
-          <span
-            class="inline-block -rotate-5 origin-center pb-2 text-[1.12em] leading-[1.08] font-bold text-[#F1EADC] underline decoration-[#F4C45B] decoration-[0.1em] underline-offset-[0.1em] [font-family:'Kalam',cursive]"
-          >
-            {copy.titleAccent}
-          </span>
-          {" "}<span
-            class="inline-block -skew-x-6 font-extrabold text-[#F4C45B]"
-          >
-            {copy.titleBrandSuffix}
-          </span>
+        <span class="block">
+          {copy.titleLineOne}
+        </span>
+        <span class="mt-3 flex items-center justify-center gap-3 whitespace-nowrap sm:mt-4">
+          <span>{copy.titleLineTwoLead}</span>
+          <BrandLockup large horizontal />
         </span>
       </h1>
 

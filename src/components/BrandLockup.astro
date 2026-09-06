@@ -1,0 +1,44 @@
+---
+interface Props {
+  large?: boolean;
+  horizontal?: boolean;
+}
+
+const { large = false, horizontal = false } = Astro.props;
+---
+
+<span
+  class:list={[
+    "inline-flex items-center justify-center whitespace-nowrap",
+    horizontal ? "flex-row gap-5 sm:gap-6" : "flex-col",
+  ]}
+>
+  <span
+    class:list={[
+      "inline-block -rotate-3 origin-center leading-[0.8] font-normal text-[#071E52] [font-family:'Yellowtail',cursive]",
+      horizontal && "[-webkit-text-stroke:0.055em_rgba(255,255,255,0.92)] [paint-order:stroke_fill]",
+      large && horizontal
+        ? "text-6xl sm:text-7xl lg:text-8xl"
+        : large
+          ? "text-[5rem] sm:text-[6rem]"
+          : "text-[1.95rem] sm:text-[2.15rem]",
+    ]}
+  >
+    Malú
+  </span>
+  <span
+    class:list={[
+      "leading-none font-extrabold tracking-[0.25em] uppercase",
+      horizontal
+        ? "text-[#4B8F2F] drop-shadow-[0_2px_8px_rgba(3,47,50,0.65)] [-webkit-text-stroke:0.055em_rgba(255,255,255,0.92)] [paint-order:stroke_fill]"
+        : "text-[#4B8F2F]",
+      large && horizontal
+        ? "text-2xl sm:text-5xl lg:text-6xl"
+        : large
+          ? "mt-4 text-lg sm:text-xl"
+          : "mt-1.5 text-[0.52rem] sm:text-[0.58rem]",
+    ]}
+  >
+    Adventures
+  </span>
+</span>

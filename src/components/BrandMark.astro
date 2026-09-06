@@ -2,26 +2,53 @@
 interface Props {
   light?: boolean;
   large?: boolean;
+  lockup?: boolean;
   href?: string;
 }
 
-const { light = false, large = false, href = "/" } = Astro.props;
+const { light = false, large = false, lockup = false, href = "/" } = Astro.props;
 ---
 
 <a
   href={href}
   class:list={[
-    "inline-flex items-baseline whitespace-nowrap",
+    "inline-flex shrink-0 whitespace-nowrap",
+    lockup ? "flex-col items-center justify-center gap-0" : "items-baseline",
     light ? "text-white" : "text-[#073f39]",
   ]}
   aria-label="Malú Adventures home"
 >
-  <span
-    class:list={[
-      "inline-block -rotate-5 origin-center pb-1 font-semibold underline decoration-[#F4C45B] decoration-[0.12em] underline-offset-[0.08em] [font-family:'Caveat_Variable',cursive]",
-      large ? "text-4xl leading-none" : "text-3xl leading-none",
-    ]}
-  >
-    Malú
-  </span>
+  {
+    lockup ? (
+      <>
+        <span
+          class:list={[
+            "inline-block -rotate-3 origin-center leading-[0.8] font-normal [font-family:'Yellowtail',cursive]",
+            large ? "text-5xl" : "text-[1.95rem] sm:text-[2.15rem]",
+            light ? "text-white" : "text-[#071E52]",
+          ]}
+        >
+          Malú
+        </span>
+        <span
+          class:list={[
+            "mt-1.5 leading-none font-extrabold tracking-[0.25em] uppercase",
+            large ? "text-xs" : "text-[0.52rem] sm:text-[0.58rem]",
+            light ? "text-[#8FCFAC]" : "text-[#4B8F2F]",
+          ]}
+        >
+          Adventures
+        </span>
+      </>
+    ) : (
+      <span
+        class:list={[
+          "inline-block -rotate-5 origin-center pb-1 font-semibold underline decoration-[#F4C45B] decoration-[0.12em] underline-offset-[0.08em] [font-family:'Caveat_Variable',cursive]",
+          large ? "text-4xl leading-none" : "text-3xl leading-none",
+        ]}
+      >
+        Malú
+      </span>
+    )
+  }
 </a>
